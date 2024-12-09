@@ -1,1 +1,1 @@
-my file 
+ECHO is on.
