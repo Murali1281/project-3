@@ -1,10 +1,13 @@
 - name: Print sample text
   hosts: localhost
+  vars:
+    URL_PLAY: play.example.com
   tasks:
    - name: Print statement
      ansible.builtin.debug:
-       msg: I love my country
+       msg: URL_PLAY - {{ URL_PLAY }}
    - name: Print statement
      ansible.builtin.debug:
-       msg: I love my country    
+       msg: I love my country
+
    
