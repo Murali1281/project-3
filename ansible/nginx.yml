@@ -1,4 +1,4 @@
-- hosts: 3.95.201.212
+- hosts: localhost
   become: yes
   tasks:
 
