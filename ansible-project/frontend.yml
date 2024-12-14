@@ -1,33 +1,31 @@
 - name: front end App
+  hosts: all
   become: yes
   tasks:
     - name: Install Nginx
       ansible.builtin.dnf:
         name :  nginx
         state : latest
-          
-          - name: copy file
+           - name: copy file
             ansible.builtin.copy:
             src: expense.conf
             dest: /etc/nginx/default.d/expense.conf
-             
-              - name: Delete content & directory
+             - name: Delete content & directory
                 ansible.builtin.file:
                   state: absent
                   path: /usr/share/nginx/html/*
-
-              - name: create a directory
+                    - name: create a directory
                 ansible.builtin.file:
                   state: directory
                   path: /usr/share/nginx/html/*
-                    
-                    - name: Unarchive a file that needs to be downloaded (added in 2.0)
-                      ansible.builtin.unarchive:
+                    - name: Download and Extract App Content
+        ansible.builtin.unarchive:
                         src: https://expense-artifacts.s3.amazonaws.com/expense-frontend-v2.zip
                         dest: /usr/share/nginx/html/
                         remote_src: yes
                          
-                         - name: Restart service nginx, in all cases
-                            ansible.builtin.service:
-                              name:  nginx
-                              state: restarted
+    - name: Start Nginx Service
+      ansible.builtin.systemd_service:
+        name: nginx
+        state: restarted
+        enabled: yes
