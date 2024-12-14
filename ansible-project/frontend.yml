@@ -6,7 +6,8 @@
       ansible.builtin.dnf:
         name :  nginx
         state : latest
-          
+
+        tasks:
           - name: copy file
             ansible.builtin.copy:
             src: expense.conf
