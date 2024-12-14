@@ -11,8 +11,8 @@
       ansible.builtin.copy:
         src: expense.conf
         dest: /etc/nginx/default.d/expense.conf
-          
-          - name: Clean the old Content
+
+        - name: Clean the old Content
            ansible.builtin.file:
              path: /usr/share/nginx/html
              state: absent
