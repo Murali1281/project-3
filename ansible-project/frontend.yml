@@ -1,13 +1,11 @@
 - name: front end App
-  hosts: all
   become: yes
   tasks:
     - name: Install Nginx
       ansible.builtin.dnf:
         name :  nginx
         state : latest
-
-        tasks:
+          
           - name: copy file
             ansible.builtin.copy:
             src: expense.conf
