@@ -17,8 +17,8 @@ RUN wget -O /tmp/tomcat.tar.gz https://dlcdn.apache.org/tomcat/tomcat-10/v${TOMC
     mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat
 
 # Set environment variables
-ENV CATALINA_HOME /opt/tomcat
-ENV PATH $CATALINA_HOME/bin:$PATH
+ENV CATALINA_HOME = /opt/tomcat
+ENV PATH = $CATALINA_HOME/bin:$PATH
 
 # Expose Tomcat port
 EXPOSE 8080
